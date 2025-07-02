@@ -1,0 +1,41 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="footdistrict" translate="label" sortOrder="100" class="footdistrict">
+            <label>Footdistrict</label>
+        </tab>
+        <section id="ups_configuration" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+			<label>UPS Api Configuration</label> 
+			<tab>footdistrict</tab>
+            <resource>Footdistrict_Sales::configuration</resource>
+			<group id="credentials" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Credentials API</label>
+                <field id="client_id" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Client ID</label>
+                </field>                 
+                <field id="client_secret" translate="obscure" type="password" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Client Secret</label>
+                     <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+                </field>                     
+            </group>
+			<group id="endpoints" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Urls API</label>
+                <field id="base_url" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Base Url</label>
+                </field>           
+                <field id="auth" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Auth Url</label>
+                </field>           
+                <field id="locator" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Locator Url</label>
+                </field>           
+            </group>
+            <group id="shipping_method" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Shipping Methods</label>
+                <field id="shipping_methods" translate="label" type="multiselect" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Shipping Methods</label>
+                     <source_model>Footdistrict\Ups\Model\Config\Source\ShippingMethodsArray</source_model>
+                </field>                    
+            </group>
+        </section>       
+    </system>
+</config>

@@ -1,0 +1,32 @@
+<!-- ko if: selectedShippingMethod()  -->
+<fieldset data-index="access_point">
+    <!-- ko ifnot: locationData !== ''  -->
+    <div class="loading-image">
+        <div data-bind="i18n: 'Searching for nearby pickup points.'"></div>
+    </div>
+    <!-- /ko -->
+    <!-- ko if: locationData !== ''  -->
+        <!-- ko if: locationData === 'error'  -->
+    <div class="ups-error" data-bind="i18n: 'There are no nearby pickup points.'"></div>
+    <div class="ups-error" data-bind="i18n: 'Try another postal code.'">"</div>
+        <!-- /ko -->
+        <!-- ko ifnot: locationData === 'error'  -->
+    <div class="accessPointRadio accessPointTitle"> 
+        <p data-bind="i18n:'Select where to pick up your order.' "></p>
+    </div><p></p>
+    <div class="accessPointOptions">
+            <!--ko foreach: { data: locationData, as: 'location'}-->
+            <div class="accessPointRadio">
+                <input type="radio" name="accessPoint" class="validate-one-required-by-name"  data-bind="value: location.value" required>
+                <div style="display:inline-block" >
+                    <h4 data-bind="text: location.name"></h4>
+                    <p data-bind="text: location.street"></p>
+                </div>
+            </div> 
+            <!-- /ko -->
+    </div>
+   
+        <!-- /ko -->
+    <!-- /ko -->
+</fieldset>
+<!-- /ko -->
